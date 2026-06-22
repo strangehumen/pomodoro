@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ポモドーロタイマー</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app-wrapper">
+
+    <header class="app-header">
+      <div class="header-top">
+        <span class="header-label">FOCUS TIMER</span>
+        <button class="settings-btn" id="settingsBtn" aria-label="時間設定">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
+      </div>
+      <h1 class="app-title" id="modeTitle">作業時間</h1>
+    </header>
+
+    <div class="settings-panel" id="settingsPanel">
+      <div class="settings-row">
+        <label for="workInput">作業時間（分）</label>
+        <input type="number" id="workInput" min="1" max="180" value="25" />
+      </div>
+      <div class="settings-row">
+        <label for="breakInput">休憩時間（分）</label>
+        <input type="number" id="breakInput" min="1" max="60" value="5" />
+      </div>
+      <button class="settings-apply" id="applyBtn">適用してリセット</button>
+    </div>
+
+    <div class="timer-circle" id="timerCircle">
+      <svg class="progress-ring" viewBox="0 0 220 220">
+        <circle class="progress-ring__bg" cx="110" cy="110" r="100" />
+        <circle class="progress-ring__fg" id="progressRing" cx="110" cy="110" r="100" />
+      </svg>
+      <div class="time-display" id="timeDisplay">25:00</div>
+    </div>
+
+    <div class="mode-bar">
+      <button class="mode-btn active" data-mode="work">作業 <span id="workLabel">25</span>分</button>
+      <button class="mode-btn" data-mode="break">休憩 <span id="breakLabel">5</span>分</button>
+    </div>
+
+    <div class="controls">
+      <button class="ctrl-btn ghost" id="resetBtn" aria-label="リセット">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="1 4 1 10 7 10"/>
+          <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+        </svg>
+      </button>
+
+      <button class="ctrl-btn primary" id="startBtn" aria-label="スタート">
+        <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none">
+          <rect x="6" y="5" width="4" height="14" rx="1"/>
+          <rect x="14" y="5" width="4" height="14" rx="1"/>
+        </svg>
+      </button>
+
+      <button class="ctrl-btn ghost" id="skipBtn" aria-label="スキップ">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="5 4 15 12 5 20 5 4"/>
+          <line x1="19" y1="5" x2="19" y2="19"/>
+        </svg>
+      </button>
+    </div>
+
+    <footer class="app-footer">
+      <span class="session-count" id="sessionCount">完了セッション: 0</span>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
