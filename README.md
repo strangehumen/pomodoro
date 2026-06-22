@@ -4,6 +4,8 @@ HTML、CSS、JavaScriptで作成したポモドーロタイマーアプリです
 
 ## デモ
 
+https://strangehumen.github.io/pomodoro/
+
 ## 制作背景
 
 集中して作業する時間と休憩時間を管理するため、自分用のポモドーロタイマーとして制作しました。
